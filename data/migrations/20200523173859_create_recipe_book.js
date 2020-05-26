@@ -26,7 +26,7 @@ exports.up = function(knex) {
          .notNullable();
       tbl.text('category')
          .notNullable();
-      tbl.string('image')
+      tbl.string('recipeImage')
          .notNullable()
          .unique();
          

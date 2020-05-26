@@ -3,6 +3,35 @@ const Recipes = require('../config/recipe-config');
 const validateRecipeId = require('../middleware/validateRecipeId');
 const Ingredients = require('../config/ingredient-config');
 const Instructions = require('../config/instruction-config');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, './uploads/')
+    },
+    filename: function(req, file, cb) {
+        cb(null, new Date().toISOString() + file.originalname)
+    }
+});
+
+const fileFilter = (req, file, cb) => {
+    if( file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
+        cb(null, true)
+    }else{
+        cb(new Error('only files of type .jpeg or .png are accetped'), false);
+    }
+     
+};
+
+const upload = multer({ 
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5
+    }, 
+    fileFilter: fileFilter
+});
+
+
 
 router.get('/', (req, res) => {
     Recipes.find()
@@ -27,8 +56,12 @@ router.get('/:id', validateRecipeId, (req, res) => {
         })
 });
 
-router.post('/', (req, res) => {
-    const newRecipe = req.body;
+router.post('/', upload.single('recipeImage'), (req, res) => {
+    
+    const newRecipe = {
+        ...req.body,
+        recipeImage:req.file.path
+    };
     Recipes.add(newRecipe)
     .then(recipe => {
         res.status(201).json({Added: recipe})

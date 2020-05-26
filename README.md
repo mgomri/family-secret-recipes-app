@@ -18,10 +18,13 @@ base url: https://secret-family-recipe-app.herokuapp.com
 - /recipes                      Create a new recipe/list all recipes
                
 - /recipes/:id                  Request/Delete/update a recipe with a specific id    
-                     
+
+- /recipes/users/:user_id       Request all recipes from the user with user_id                 
 - /recipe/:id/ingredients               List all ingredients for a recipe with id. 
 
 - /recipe/:id/instructions              List all instrctions for a recipe with a specific id
+
+
 
 ***Ingredients***         
                                    

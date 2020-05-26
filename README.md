@@ -10,8 +10,8 @@ base url: https://secret-family-recipe-app.herokuapp.com
 
 ***Authorization***
 
-- /register      Register a new user
-- /login         Login
+- /users/register      Register a new user
+- /users/login         Login
 
 ***Recipes***
 

@@ -19,7 +19,7 @@ server.use('/instructions', instructionRouter);
 
 
 server.get('/', (req, res) => {
-    const welcomeMessage = process.env.MOTD || 'Welcome to Family Cook Book Api'
+    const welcomeMessage = process.env.MOTD || 'Family Cook Book Api'
     res.json({ welcomeMessage });
 });
 

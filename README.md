@@ -30,13 +30,13 @@ base url: https://secret-family-recipe-app.herokuapp.com
                                    
 - /ingredients                      Add a new ingredient/list all ingredients
                
-- /ingredients/:id                  Request/Delete/Update a ingredient with a specific id  
+- /ingredients/:id                  Request/Delete/Update a ingredient with a specific  recipe_id  
 
 ***instructions***         
                                    
 - /instructions                      Add a new instruction/list all instructions
                
-- /instructions/:id                  Request/Delete/Update a instruction with a specific id    
+- /instructions/:id                  Request/Delete/Update a instruction with a specific recipe_id    
                 
                      
 

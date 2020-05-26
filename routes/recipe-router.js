@@ -57,6 +57,23 @@ router.get('/:id', validate.recipeId, (req, res) => {
         })
 });
 
+
+router.get('/users/:userId', (req, res) => {
+    const { userId } = req.params;
+    Recipes.findByUser(userId)
+        .then(recipe => {
+            if(recipe){
+                res.status(200).json(recipe);
+            }else{
+                res.status(404).json({ message: 'that user has no recipes'})
+            }
+        })
+        .catch(err => {
+            res.status(500).json({ message: err})
+        })
+});
+
+
 router.post('/', upload.single('recipeImage'), (req, res) => {
     
     const newRecipe = {

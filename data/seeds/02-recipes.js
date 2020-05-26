@@ -7,7 +7,7 @@ exports.seed = function(knex) {
          title: 'Keto Mushroom-Stuffed Chicken Breasts',
          source:'mom',
          category:'chicken',
-         recipeImage:'usodfpsjdfsdf'
+         recipeImage:'uploads/2020-05-26T16:32:15.694Zketo.jpg'
        },
 
        {
@@ -15,7 +15,7 @@ exports.seed = function(knex) {
         title: 'Heirloom Blueberry Cake',
         source:'my pet rat',
         category:'Desserts',
-        recipeImage:'abcdefgh'
+        recipeImage:'uploads/2020-05-26T16:33:50.857Zblueberry.jpg'
       },
       ]);
     });

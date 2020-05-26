@@ -42,15 +42,15 @@ base url: https://secret-family-recipe-app.herokuapp.com
 user1:
 
 {
-    username:ironChef;
-    password:hello123
+    - username:ironChef
+    - password:hello123
 }
 
 user2:
 
 {
-    username:boyardee
-    password:password123
+    - username:boyardee
+    - password:password123
 }
 
 

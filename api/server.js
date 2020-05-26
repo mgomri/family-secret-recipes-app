@@ -19,7 +19,8 @@ server.use('/instructions', instructionRouter);
 
 
 server.get('/', (req, res) => {
-    res.send({ api : 'Welcome to Family Cook Book Api'});
+    const welcomeMessage = process.env.MOTD || 'Welcome to Family Cook Book Api'
+    res.json({ motd : welcomeMessage });
 });
 
 module.exports = server;

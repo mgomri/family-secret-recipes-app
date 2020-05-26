@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const Recipes = require('../config/recipe-config');
-const validateRecipeId = require('../middleware/validateRecipeId');
+const validate = require('../middleware/validate');
 const Ingredients = require('../config/ingredient-config');
 const Instructions = require('../config/instruction-config');
 const multer = require('multer');
+
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
@@ -45,7 +46,7 @@ router.get('/', (req, res) => {
     })
 });
 
-router.get('/:id', validateRecipeId, (req, res) => {
+router.get('/:id', validate.recipeId, (req, res) => {
     const { id } = req.params;
     Recipes.findById(id)
         .then(recipe => {
@@ -71,7 +72,7 @@ router.post('/', upload.single('recipeImage'), (req, res) => {
     })
 });
 
-router.put('/:id', validateRecipeId, (req, res) => {
+router.put('/:id', validate.recipeId, (req, res) => {
     const changes = req.body;
     const { id } = req.params;
     Recipes.update(id, changes)
@@ -83,7 +84,7 @@ router.put('/:id', validateRecipeId, (req, res) => {
     })
 });
 
-router.delete('/:id', validateRecipeId, (req, res) => {
+router.delete('/:id', validate.recipeId, (req, res) => {
     const { id } = req.params;
     Recipes.remove(id)
     .then(recipe => {
@@ -95,7 +96,7 @@ router.delete('/:id', validateRecipeId, (req, res) => {
 });
 
 //get recipe's ingredients
-router.get('/:id/ingredients', (req, res) => {
+router.get('/:id/ingredients', validate.recipeId, (req, res) => {
     Ingredients.findByRecipe(req.params.id)
         .then(ing => {
             res.status(200).json(ing)
@@ -105,10 +106,10 @@ router.get('/:id/ingredients', (req, res) => {
         })
 });
 
-router.get('/:id/instructions', (req, res) => {
+router.get('/:id/instructions', validate.recipeId, (req, res) => {
     Instructions.findByRecipe(req.params.id)
-        .then(ing => {
-            res.status(200).json(ing)
+        .then(instruction => {
+            res.status(200).json(instruction)
         })
         .catch(err => {
             res.status(500).json(err);

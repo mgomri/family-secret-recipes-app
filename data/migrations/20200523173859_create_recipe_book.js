@@ -8,7 +8,8 @@ exports.up = function(knex) {
         tbl.string('password', 128)
             .notNullable();
         tbl.string('email', 255)
-            .notNullable();
+            .notNullable()
+            .unique();
   })
   .createTable('recipes', tbl => {
       tbl.increments('recipe_id');
@@ -26,9 +27,9 @@ exports.up = function(knex) {
          .notNullable();
       tbl.text('category')
          .notNullable();
-      tbl.string('recipeImage')
-         .notNullable()
-         .unique();
+      tbl.string('recipeImage');
+         
+         
          
   })
   .createTable('ingredients', tbl => {

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Instructions = require('../config/instruction-config');
+const validate = require('../middleware/validate');
 
 router.get('/', (req, res) => {
     Instructions.find()
@@ -12,7 +13,7 @@ router.get('/', (req, res) => {
 })
 
 
-router.get('/:id', (req, res) => {
+router.get('/:id', validate.instructionId, (req, res) => {
     const { id } = req.params;
     Instructions.findById(id)
         .then(instruction => {
@@ -23,7 +24,7 @@ router.get('/:id', (req, res) => {
         })
 });
 
-router.post('/', (req, res) => {
+router.post('/', validate.instructionBody, (req, res) => {
     const newInstruction = req.body;
     Instructions.add(newInstruction)
         .then(instruction => {
@@ -35,7 +36,7 @@ router.post('/', (req, res) => {
 })
 
 
-router.put ('/:id', (req, res) => {
+router.put ('/:id', validate.instructionId, (req, res) => {
     const changes = req.body;
     const { id } = req.params;
     Instructions.update(id, changes)
@@ -47,7 +48,7 @@ router.put ('/:id', (req, res) => {
         })
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', validate.instructionId, (req, res) => {
     const { id } = req.params;
     Instructions.remove(id)
     .then(instruction =>{

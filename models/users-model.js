@@ -1,6 +1,6 @@
 const knex = require('knex');
 const knexConfig = require('../knexfile');
-const database = knex(knexConfig.development);
+const database = knex(knexConfig.production);
 
 
 module.exports = {
@@ -27,16 +27,10 @@ function findById(user_id){
            .first();
 };
 
-function findById(user_id){
-    return database('users')
-           .where({ user_id })
-           .first();
-}
-
 async function add(user){
     try{
         const[id] = await database('users')
-                        .insert(user, 'id');
+.insert(user, 'id');
         return findById(id);
     }catch(err){
         throw err;

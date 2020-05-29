@@ -1,7 +1,7 @@
 const express = require('express');
-const Recipes = require('../config/recipe-config');
-const Ingredients = require('../config/ingredient-config');
-const Instructions = require('../config/instruction-config');
+const Recipes = require('../models/recipes-model');
+const Ingredients = require('../models/ingredients-model');
+const Instructions = require('../models/instructions-model');
 
 function recipeId (req, res, next) {
     const { id } = req.params;

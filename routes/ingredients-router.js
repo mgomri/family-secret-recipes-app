@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Ingredients = require('../config/ingredient-config');
+const Ingredients = require('../models/ingredients-model');
 const validate = require('../middleware/validate');
 
 

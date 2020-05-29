@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Instructions = require('../config/instruction-config');
+const Instructions = require('../models/instructions-model');
 const validate = require('../middleware/validate');
 
 router.get('/', (req, res) => {

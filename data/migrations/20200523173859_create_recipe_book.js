@@ -3,13 +3,13 @@ exports.up = function(knex) {
   return knex.schema.createTable('users', tbl => {
         tbl.increments('user_id');
         tbl.string('username', 128)
-         .unique()
-         .notNullable();
+           .unique()
+           .notNullable();
         tbl.string('password', 128)
-            .notNullable();
+           .notNullable();
         tbl.string('email', 255)
-            .notNullable()
-            .unique();
+           .notNullable()
+           .unique();
   })
   .createTable('recipes', tbl => {
       tbl.increments('recipe_id');
@@ -28,9 +28,7 @@ exports.up = function(knex) {
       tbl.text('category')
          .notNullable();
       tbl.string('recipeImage');
-         
-         
-         
+             
   })
   .createTable('ingredients', tbl => {
       tbl.increments('ingredient_id');

@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const Recipes = require('../config/recipe-config');
+const Recipes = require('../models/recipes-model');
 const validate = require('../middleware/validate');
-const Ingredients = require('../config/ingredient-config');
-const Instructions = require('../config/instruction-config');
+const Ingredients = require('../models/ingredients-model');
+const Instructions = require('../models/instructions-model');
 const multer = require('multer');
 
 

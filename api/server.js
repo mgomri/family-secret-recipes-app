@@ -2,10 +2,10 @@ const express = require ('express');
 const server = express();
 const cors = require('cors');
 const helmet = require ('helmet');
-const recipeRouter = require('../routes/recipe-router');
-const userRouter = require('../routes/user-router');
-const ingredientRouter = require('../routes/ingredient-router');
-const instructionRouter = require('../routes/instruction-router');
+const recipeRouter = require('../routes/recipes-router');
+const userRouter = require('../routes/users-router');
+const ingredientRouter = require('../routes/ingredients-router');
+const instructionRouter = require('../routes/instructions-router');
 const authenticator = require('../middleware/authenticator');
 
 server.use(helmet());

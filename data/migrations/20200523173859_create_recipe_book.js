@@ -43,7 +43,7 @@ exports.up = function(knex) {
          .notNullable();
   })
   .createTable('instructions', tbl => {
-   tbl.increments('instruction_number');
+   tbl.increments('instruction_id');
    tbl.integer('recipe_id')
       .unsigned()
       .notNullable()
